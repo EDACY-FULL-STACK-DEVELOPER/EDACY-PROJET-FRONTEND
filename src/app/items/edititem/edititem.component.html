@@ -1,1 +1,37 @@
-<p>edititem works!</p>
+<h2 mat-dialog-title>Modifier l'item</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="itemForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Titre</mat-label>
+      <input matInput formControlName="titre" required>
+    
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" rows="4"></textarea>
+    
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Auteur</mat-label>
+      <input matInput formControlName="auteur" required>
+      
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button 
+    mat-raised-button 
+    color="primary" 
+    (click)="onSubmit()"
+    [disabled]="!itemForm.valid"
+    cdkFocusInitial
+    type="button">
+    <span *ngIf="!isLoading">Enregistrer</span>
+    <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+  </button>
+</mat-dialog-actions>

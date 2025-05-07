@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Observable, switchMap, take } from 'rxjs';
 
-interface Item {
-  id?: string;  // Optionnel pour la création
+export interface Item {
+  _id: string;  // Optionnel pour la création
   titre: string;
   description: string;
   auteur: string;
@@ -58,12 +58,12 @@ export class ItemService {
 
   // Mettre à jour un item
   updateItem(id: string, item: Partial<Item>): Observable<Item> {
-    return this.http.patch<Item>(`${this.apiUrl}/update/${id}`, item);
+    return this.http.put<Item>(`${this.apiUrl}/update${id}`, item);
   }
 
   // Supprimer un item
-  deleteItem(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  deleteItem(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/delete${id}`);
   }
 
   // Récupérer les items d'un utilisateur spécifique

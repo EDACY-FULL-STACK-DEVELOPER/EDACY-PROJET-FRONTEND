@@ -35,3 +35,26 @@ button mat-icon {
 .add-button {
     margin: 20px 0;
 }
+
+
+/* Ajoutez ceci à votre fichier CSS */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .item-content {
+    flex-grow: 1;
+  }
+  
+  .item-actions {
+    display: flex;
+    gap: 8px; /* Espace entre les boutons */
+  }
+  
+  mat-list-item {
+    height: auto !important;
+    padding: 16px 0;
+  }

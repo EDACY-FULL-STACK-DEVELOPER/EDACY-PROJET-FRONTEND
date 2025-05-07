@@ -23,33 +23,34 @@
     </div>
   
     <!-- Liste des items -->
-    <!-- <mat-card *ngIf="items.length > 0">
+    <mat-card *ngIf="items.length > 0">
       <mat-list>
         <mat-list-item *ngFor="let item of items" class="item-row">
           <div class="item-content">
-            <h3 matLine>{{ item.title }}</h3>
-            <p matLine>{{ item.description }}</p>
-            <p matLine>{{ item.auteur }}</p>
+            <p matLine><strong>Titre:</strong> {{ item.titre }}</p>
+            <p matLine><strong>Description:</strong> {{ item.description }}</p>
+            <p matLine><strong>Auteur:</strong> {{ item.auteur }}</p>
+            <p matLine><strong>Créé par:</strong> {{ item.createdBy }}</p>
           </div>
           
           <div class="item-actions">
             <button mat-icon-button color="primary" (click)="editItem(item)">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteItem(item.id)">
+            <button mat-icon-button color="warn" (click)="deleteItem(item._id)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </mat-list-item>
       </mat-list>
-    </mat-card> -->
+    </mat-card>
   
     <!-- Message si pas d'items -->
-    <!-- <div *ngIf="items.length === 0" class="no-items">
+    <div *ngIf="items.length === 0" class="no-items">
       <mat-card>
         <mat-card-content>
           <p>Aucun item disponible. Ajoutez-en un nouveau !</p>
         </mat-card-content>
       </mat-card>
-    </div> -->
+    </div>
   </div>

@@ -1,0 +1,16 @@
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  mat-spinner {
+    margin: 0 auto;
+  }
+  
+  mat-dialog-actions {
+    padding: 16px 0;
+  }
+  
+  mat-dialog-content {
+    padding-top: 16px;
+  }
