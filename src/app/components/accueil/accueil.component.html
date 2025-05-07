@@ -1,1 +1,55 @@
-<p>accueil works!</p>
+<mat-toolbar color="primary" class="navbar">
+    <span>EDACY Projet</span>
+    
+    <span class="spacer"></span>
+    
+    <div *ngIf="authService.currentUser$ | async as user">
+      <!-- Affiché quand l'utilisateur est connecté -->
+      <span class="welcome-message">
+        Bienvenue, {{ user.firstName }} {{ user.lastName }}
+      </span>
+      <button mat-raised-button color="warn" (click)="logout()">
+        <mat-icon>logout</mat-icon> Déconnexion
+      </button>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <!-- Bouton d'ajout -->
+    <div class="add-button">
+      <button mat-raised-button color="primary" (click)="openCreateDialog()">
+        <mat-icon>add</mat-icon> Ajouter un item
+      </button>
+    </div>
+  
+    <!-- Liste des items -->
+    <!-- <mat-card *ngIf="items.length > 0">
+      <mat-list>
+        <mat-list-item *ngFor="let item of items" class="item-row">
+          <div class="item-content">
+            <h3 matLine>{{ item.title }}</h3>
+            <p matLine>{{ item.description }}</p>
+            <p matLine>{{ item.auteur }}</p>
+          </div>
+          
+          <div class="item-actions">
+            <button mat-icon-button color="primary" (click)="editItem(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteItem(item.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card> -->
+  
+    <!-- Message si pas d'items -->
+    <!-- <div *ngIf="items.length === 0" class="no-items">
+      <mat-card>
+        <mat-card-content>
+          <p>Aucun item disponible. Ajoutez-en un nouveau !</p>
+        </mat-card-content>
+      </mat-card>
+    </div> -->
+  </div>

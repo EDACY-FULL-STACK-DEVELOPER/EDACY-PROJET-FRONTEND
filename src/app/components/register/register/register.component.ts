@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ import { RouterModule, Router } from '@angular/router';
     MatInputModule, 
     MatButtonModule, 
     MatCardModule,
-    RouterModule
+    RouterModule,
+    MatToolbarModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

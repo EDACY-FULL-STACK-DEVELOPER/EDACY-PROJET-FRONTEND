@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 interface FrontendUser {
   firstName?: string;
@@ -30,15 +31,21 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<FrontendUser | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private http: HttpClient, private router: Router) {
     this.loadUserFromStorage();
   }
 
   private loadUserFromStorage(): void {
-    const user = localStorage.getItem('currentUser');
-    if (user) {
-      this.currentUserSubject.next(JSON.parse(user));
+    if (this.isBrowser()) {
+      const user = localStorage.getItem('currentUser');
+      if (user) {
+        this.currentUserSubject.next(JSON.parse(user));
+      }
     }
+  }
+
+  private isBrowser(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 
   private mapApiToFrontendUser(apiUser: ApiUser): FrontendUser {
@@ -83,14 +90,17 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('authToken');
+    if (this.isBrowser()) {
+      // Effacer le token et l'utilisateur du localStorage
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('authToken');
+    }
     this.currentUserSubject.next(null);
     this.router.navigate(['/login']);
   }
 
   getToken(): string | null {
-    return localStorage.getItem('authToken');
+    return this.isBrowser() ? localStorage.getItem('authToken') : null;
   }
 
   isAuthenticated(): boolean {
@@ -98,8 +108,10 @@ export class AuthService {
   }
 
   private handleAuthentication(response: AuthResponse): void {
-    localStorage.setItem('authToken', response.token);
-    localStorage.setItem('currentUser', JSON.stringify(response.user));
+    if (this.isBrowser()) {
+      localStorage.setItem('authToken', response.token);
+      localStorage.setItem('currentUser', JSON.stringify(response.user));
+    }
     this.currentUserSubject.next(response.user);
   }
 }

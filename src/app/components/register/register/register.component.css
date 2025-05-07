@@ -5,30 +5,42 @@
     min-height: 100vh;
     background-color: #f5f5f5;
     padding: 20px;
-  }
+}
   
-  .register-card {
+.register-card {
     width: 100%;
     max-width: 500px;
     padding: 2rem;
-  }
+}
   
-  .form-row {
+.form-row {
     margin-bottom: 1rem;
     width: 100%;
-  }
+}
   
-  .button-row {
+.button-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
-  }
+}
   
-  .button-row button[type="submit"] {
+.button-row button[type="submit"] {
     margin-right: 1rem;
-  }
+}
   
-  mat-form-field {
+mat-form-field {
     width: 100%;
-  }
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+  
+.spacer {
+    flex: 1 1 auto;
+}

@@ -1,0 +1,37 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+  
+.spacer {
+    flex: 1 1 auto;
+}
+  
+.button-spacer {
+    display: flex;
+    gap: 16px;
+}
+  
+.welcome-message {
+    margin-right: 20px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+button mat-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.container {
+    padding: 20px;
+    margin-top: 64px; /* Pour compenser la toolbar fixe */
+}
+  
+.add-button {
+    margin: 20px 0;
+}

@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import { RouterModule, Router } from '@angular/router';
     MatButtonModule,
     ReactiveFormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatToolbarModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
