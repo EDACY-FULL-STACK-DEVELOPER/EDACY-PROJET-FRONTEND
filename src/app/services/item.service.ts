@@ -8,7 +8,12 @@ export interface Item {
   titre: string;
   description: string;
   auteur: string;
-  createdBy: string;  // ID ou email de l'utilisateur créateur
+  createdBy: {
+    id: string;
+    prenom: string;
+    nom: string;
+    email?: string;
+  };
   createdAt?: Date;   
   updatedAt?: Date;   
 }
@@ -37,7 +42,7 @@ export class ItemService {
           titre: item.titre,
           description: item.description,
           auteur: item.auteur,
-          createdBy: currentUser?.firstName + ' ' + currentUser?.lastName 
+          createdBy: currentUser?.id 
         };
         return this.http.post<Item>(`${this.apiUrl}/ajouter`, completeItem, { headers: this.getHeaders() });
         
